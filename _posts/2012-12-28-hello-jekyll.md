@@ -3,6 +3,7 @@ title: Hello Jekyll
 layout: post
 permalink: /2013/01/hello-jekyll/
 date: Sat Jan 19 01:03:00 am GMT+8
+published: false
 ---
 最近一时兴起，注册了独立域名，准备将平时记录的一些文档放到域名下面来，做一个个人的Blog。于是开始上网找，看看用那个工具搭建个人博客比较方便，最后用了[github][]的[pages][]，把[我的blog](http://tianxiao.in)托管到[github][]上，下面就来说说这个过程。
 

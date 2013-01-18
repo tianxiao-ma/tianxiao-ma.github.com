@@ -2,8 +2,8 @@
 title: Home
 layout: default
 ---
+{% if paginator.posts %}
 {% for post in paginator.posts %}
-
    <!-- here add you post markup -->
    <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
    <p class="author">
@@ -28,3 +28,8 @@ layout: default
     <span class="next ">Next</span>
   {% endif %}
 </div>
+{% else %}
+  <div>
+  I'm comming soon, be patient......
+  </div>
+{% endif %}
