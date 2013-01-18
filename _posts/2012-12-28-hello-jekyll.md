@@ -1,45 +1,42 @@
 ---
-title: Hello Jekyll, Goodbye Wordpress
+title: Hello Jekyll
 layout: post
-permalink: /2012/12/hello-jekyll/
-categories: [Web Development, Ruby]
-date: Wen Jan 29 21:59:40 GMT+8 2013
+permalink: /2013/01/hello-jekyll/
+date: Sat Jan 19 01:03:00 am GMT+8
 ---
-中文中文
-My holiday vacation project this year was to migrate this blog off Wordpress into a system that better fits my brain. After quite a bit of research I decided on [Jekyll][1]. I decided to move off Wordpress because I often found myself fighting with the admin and editor just to do simple things. I was fine working in the HTML view, but I prefer the simplicity of writing in Textile or Markdown.
+最近一时兴起，注册了独立域名，准备将平时记录的一些文档放到域名下面来，做一个个人的Blog。于是开始上网找，看看用那个工具搭建个人博客比较方便，最后用了[github][]的[pages][]，把[我的blog](http://tianxiao.in)托管到[github][]上，下面就来说说这个过程。
 
-So why Jekyll?
+[github]: https://github.com/
+[pages]: http://pages.github.com/
 
-1. I can write my posts in [Markdown][2].
-2. It uses [Liquid][3] for its templating. I've been using Liquid for a long time, so I'm very comfortable with it.
-3. Jekyll sites can be hosted for free on [GitHub Pages][4].
+Jekyll
+==============
+首先来说说[jekyll][]，因为这是[github pages][]采用的博客发布框架，而了解这个框架是整个过程中最重要的部分，所以就放到第一个来说。
 
-## Moving out of Wordpress
+什么是Jekyll
+--------------
+从表面上来看[jekyll][]是一个纯文本到静态html页面的转换框架，深入一点来看[jekyll][]本身是一个*'胶水'*，它合理地选择了一组功能强大并且简单易用的工具，然后将这些工具*'粘贴'*到一起，形成一个适合用纯文本来编写和发布静态html页面的框架。而[github]则将这个框架以服务的形式免费向公众开放。
 
-First thing I did was install the [Disqus][5] plugin and migrate my legacy comments into it. This allowed me to keep my comment history. Second I installed the [Wordpress to Jekyll plugin][6]. This handy little plugin provides an export option that will produce a zip file containing all posts and pages nicely coverted to Markdown. What it doesn't do is bring any associated images along with it. That has to be done manually. I moved my wp-content images into a root "images" folder and did a simple find/replace to update the paths. Depending on the complexity of your posts, you may be golden at that point. I had to fix around five or six posts which contained either bad characters or messy converted Markdown.
+Jekyll包含的工具集
+-------------
+[jekyll]主要包含了以下几种工具，
 
-## Moving into Jekyll
++   [YMAL][]
+	这是一个人类可读的、跨语言的、基于Unicode的数据序列化语言，它的设计中包含了很多常用编程中的数据类型定义。它可以被用来编写配置文件或者用来序列化编程语言中的数据结构。由于这是一个规范，因此通过为不同语言编写解析器，就可以达到跨语言或者跨网络共享数据的目的。目前基本上所有流行的编程语言都有各自语言实现的[YMAL][]解析器。
+	在[jekyll]中，它被用来为每个页面提供配置信息或者元数据。
++   [Liquid][]
+	这是一个模版语言，在[jekyll][]中的作用类似于[Velocity][]和[FreeMarker][]，只不过它是为[Ruby on Rails][]应用开发的。
++   [MarkDown][]
+	这是一个文本到html页面的转换工具，它定义了一些可读性强并且简单易用的文本标记，通过在纯文本中使用这些标记，经过[MarkDown][]翻译器翻译之后，就会变成html页面。本文就是使用[MarkDown]编写的，这是我们使用[jekyll][]作为个人博客发布管理框架之后，最常使用到的一个工具。
++   [Textile][]
+	功能于[MarkDown][]相同，[jekyll][]同时支持[MarkDown]和[Textile]作为内容格式。
 
-If you're not married to your theme, you might be better off using [Jekyll Bootstrap][7]. Even if you don't use it, Jekyll Bootstrap has a lot of good info. I chose to keep my previous theme, so that added some time to my migration. Once I had everything set up and running locally, [I set up my GitHub repo][8], [pointed the A record with my domain name provider][9] and I was off to the races. The only issue I have with using GitHub Pages is that [they don't allow custom plugins][10]. There are a couple of features I had to forego because of this, but I'm willing to accept this in the short term.
-
-## Conclusion
-
-Even though this is only the first post created using the new system, I think it's going to work out quite well.
-
-## Resources
-
-* [Jekyll project on GitHub][1]
-* [Wordpress to Jekyll Exporter][6]
-* [Using Jekyll with GitHub Pages][8]
-* [Jekyll Bootstrap][7]
-
- [1]: https://github.com/mojombo/jekyll
- [2]: http://daringfireball.net/projects/markdown/
- [3]: http://wiki.shopify.com/UsingLiquid
- [4]: http://pages.github.com/
- [5]: http://wordpress.org/extend/plugins/disqus-comment-system/
- [6]: https://github.com/benbalter/wordpress-to-jekyll-exporter
- [7]: http://jekyllbootstrap.com/
- [8]: https://help.github.com/articles/using-jekyll-with-pages
- [9]: https://help.github.com/articles/setting-up-a-custom-domain-with-pages
- [10]: https://github.com/mojombo/jekyll/issues/325
+[jekyll]: https://github.com/mojombo/jekyll
+[github pages]: http://pages.github.com/
+[YMAL]: http://yaml.org/
+[Velocity]: http://velocity.apache.org/
+[FreeMarker]: http://freemarker.sourceforge.net/
+[Liquid]: http://liquidmarkup.org/
+[Ruby on Rails]: http://rubyonrails.org/ 
+[MarkDown]: http://daringfireball.net/projects/markdown/
+[Textile]: http://textile.thresholdstate.com/
