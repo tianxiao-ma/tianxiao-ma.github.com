@@ -80,6 +80,10 @@ published: true
 
 完成了上面的配置工作之后，就可以用域名访问你在[github][]上的[github pages][]页面了。*github*为你生成的*pages*是一个标准的[jekyll][]目录结构，因为[github pages][pages]本省就是用[jekyll][]实现的。现在你就可以利用在这边文章中了解到的信息开始撰写你的日志了。
 
+参考文献：
+==========
+[jekyll相关文档](http://jekyllrb.com/)
+
 [blog migrations]: http://wiki.github.com/mojombo/jekyll/blog-migrations
 [jekyll ymal front matter]: https://github.com/mojombo/jekyll/wiki/YAML-Front-Matter
 [jekyll usage]: https://github.com/mojombo/jekyll/wiki/Usage
