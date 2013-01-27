@@ -2,3 +2,4 @@ permalink: /:year/:month/:title/
 markdown: rdiscount
 paginate: 5
 url: tianxiao.in
+pygments: true
