@@ -17,9 +17,9 @@ layout: nil
  {% for post in site.posts %}
  <entry>
    <title>{{ post.title }}</title>
-   <link href="http://recursive-design.com{{ post.url }}"/>
+   <link href="http://tianxiao.in{{ post.url }}"/>
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>http://recursive-design.com{{ post.id }}</id>
+   <id>http://tianxiao.in{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endfor %}
