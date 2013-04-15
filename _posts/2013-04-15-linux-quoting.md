@@ -1,5 +1,5 @@
 ---
-title: User newline in sed on mac os
+title: Use Newline in SED on MAC OS
 layout: post
 permalink: /2013/04/how-to-use-newline-in-sed-on-mac-os/
 date: Wed Apr 15 18:30:00 pm GMT+8 2013
@@ -38,7 +38,7 @@ published: true
 这样就可以得到正确的结果了，这种替换的方式目前只在Mac上的BSD 版本的`sed`测试过，其他版本的linux上的BSD版本的`sed`没有测试过，未必生效。
 
 参考文献：  
-[1]: [Linux Shell Quoting Mechanism](https://www.gnu.org/software/bash/manual/bashref.html#Quoting)
+1: [Linux Shell Quoting Mechanism](https://www.gnu.org/software/bash/manual/bashref.html#Quoting)
 
 
 
