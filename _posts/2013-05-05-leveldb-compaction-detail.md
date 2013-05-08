@@ -2,7 +2,7 @@
 title: LevelDB合并算法详解
 layout: post
 permalink: /2013/05/leveldb-compaction-detail/
-date: Sun May 25 21:15:00 pm GMT+8 2013
+date: Sun May 05 21:15:00 pm GMT+8 2013
 published: true
 ---
 

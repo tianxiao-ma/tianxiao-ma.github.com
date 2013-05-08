@@ -1,0 +1,20 @@
+---
+title: leveldb的snapshot实现
+layout: post
+permalink: /2013/05/leveldb-snapshot-detail/
+date: Sun May 08 22:30:00 pm GMT+8 2013
+published: true
+---
+在leveldb中创建一个snapshot的过程非常简单，只需要创建一个SnapshotImpl对象，将当前整个db的sequenceNum赋值给SnapshotImpl的number属性，在将新创建的SnapshotImpl对象放入到由ShapshotList对象维护的双线循环列表中就可以了。
+
+某个snapshot的数据，只能通过调用DB对象的NewIterator函数进行访问，在改函数的ReadOptions参数中放置想要访问的某个snapshot，这个snapshot由SnapshotImpl表示。
+
+leveldb在存储的时候，会将每个key插入的时候的sequenceNum与这个key一起进行编码，形成一个内部key，叫做InternalKey。排序的时候，首先按照真正的key升序排列，在真正的key相同的情况下，按照sequenceNum降序排列。在合并的过程中，对于一组重复的key来说，序列号最大的那个key会被先访问到，由于这是第一个key，因此会被写入下一层中，然后leveldb会将这个key的序列号保存下来，然后去取这组重复的key中的第二个key。这个时候，leveldb会比较上一次保留下来那个key的序列号和最老的那个snapshot中的保存下来的序列号，根据结果执行下面的逻辑：
+
+
+* 在有snapshot的情况下，由于key相同的元素会按照sequenceNum降序排列，当上一个key的sequenceNum比最老的那个snapshot中的sequenceNum大的时候，如果后面还有相同的key，那么下一个key是需要被保留的。因为这个key肯定是会落在某个snapshot中的。
+* 如果上一个key的sequenceNum小于等于最老的那个snapshot中的sequenceNum，如果还有下一个key，说明下一个是在最老的那个snapshot之前就存在了，这个时候丢掉这个key是安全的，因为已经不会有任何的可能去读这个key了。  
+
+在没有snapshot的情况下，由于所有的key的sequenceNum都不会大于当前db的sequenceNum，当第一个key，也就是所有相同的key中，sequenceNum最大的那个key被保留之后，之后其他所有相同的key都会被排除掉。
+
+这种做法其实是存在问题的，比如，我们在一个key被第一次插入leveldb的时候对leveldb做一次snapshot，之后连续插入3次相同的key，根据目前leveldb的算法，这4个key是都会被保存下来的。因为，在第一次snapshot之后插入的每一个key的sequenceNum都比snapshot中保存的sequenceNum大。1.9.0版本的leveldb中还是采用这种方式的。
