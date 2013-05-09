@@ -16,17 +16,19 @@ published: true
 ![mapred-img-3](/images/2013-01/hadoop-mapreduce/mapred-img-3.jpg)
 * Map过程
 
-Map过程从需要进行合并的数据集合中读取数据，以Join条件中被用到的那一列的值为key，以整行数据为Value，将结果写到输出流中。为了标记Map集合中的每一行记录来自于哪个源数据集合，需要位Key添加一个标识。例如，有数据集合P(A,B)和Q(C,B)，其中P集合有A、B两列，而Q集合有B、C两列，在根据B列对两个数据集合进行Join的情况下，P集合中的数据经过Map之后将以(B,tag,A+B)的形式输出，其中B列的值与tag的值共同组成Key，而整行记录将作为Value输出。对于Q来说也是如此，Q集合经过Map之后将以(B,tag,B+C)的形式输出。
+Map过程从需要进行合并的数据集合中读取数据，以Join条件中被用到的那一列的值为key，以整行数据为Value，将结果写到输出流中。为了标记Map集合中的每一行记录来自于哪个源数据集合，需要为Key添加一个标识。例如，有数据集合P(A,B)和Q(C,B)，其中P集合有A、B两列，而Q集合有B、C两列，在根据B列对两个数据集合进行Join的情况下，P集合中的数据经过Map之后将以(B,tag,A+B)的形式输出，其中B列的值与tag的值共同组成Key，而整行记录将作为Value输出。对于Q来说也是如此，Q集合经过Map之后将以(B,tag,B+C)的形式输出。
+
 * tag的作用
 
 tag的作用是为了区分数据来源，以便在Reduce阶段可以对不同来源的记录进行Join。但是，由于在Key中增加了一个tag，如果使用Hadoop默认的切分方法(Partitioner)，会将B列值相同的记录分配给不同的Reducer，因此我们需要提供自定义的Partitioner，在选择Reducer的时候，不去考虑tag。
 
 在数据丢给Reducer的reduce方法进行处理之前，Hadoop会根据key将数据进行聚合，把具有相同key的数据组合到一起去。由于在Key中增加了tag标识，如果使用Hadoop提供的默认分组方法，来自于不同集合的记录是无法被组合到一起去的，因此，我们同样需要提供自定义的分组排序算法，在分组的时候不去考虑tag标识，同时保证在同一个Key下面，来自于一个集合的所有记录都会排在另外一个集合的所有记录之前。
+
 * Reduce过程 
 
 在Reduce阶段，由于Map-Reduce方法保证具有相同Key的数据会被丢给同一个Reducer进行处理，因此P和Q中，在B列值相同的记录会被同一个Reducer进行处理，这个时候就可以执行Join操作了。所采用的算法如下： 
 
-算法中的Key和Value都使用了TextPar类，找个类可以封装两个Text对象，对于Key来说，这个TextPair封装了被Join列的值以及第一个其>中一个数据集合的tag，而对于Value来说，TextPair则封装了每个集合中的记录以及这个记录的来源。
+算法中的Key和Value都使用了TextPar类，这个类可以封装两个Text对象，对于Key来说，这个TextPair封装了被Join列的值以及第一个其中一个数据集合的tag，而对于Value来说，TextPair则封装了每个集合中的记录以及这个记录的来源。
 
 		{% highlight java linenos %}
 		void reduce(TextPair key , Iterator <TextPair> values ,   
