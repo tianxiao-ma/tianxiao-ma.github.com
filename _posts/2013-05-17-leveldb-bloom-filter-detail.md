@@ -6,7 +6,7 @@ date: Fri May 17 00:30:00 pm GMT+8 2013
 published: true
 ---
 leveldb支持为每一段存储进来的数据提供Bloom Filter，默认情况下是每2M数据生成一个Bloom Filter。算法如下：
-
+{% highlight c++ linenos %}
 	// 创建过滤器，根据keys生成过滤器，结果放到dst中
 	virtualvoid CreateFilter(constSlice* keys, int n, std::string* dst) const {
     // bits_per_key_表示每个key在过滤器中用多少bit，bits是总共需要的bit数
@@ -38,8 +38,8 @@ leveldb支持为每一段存储进来的数据提供Bloom Filter，默认情况�
       }
     }
     }
-
-
+{% endhighlight %}
+{% highlight c++ linenos %}
 	// 判断key是不是在过滤器中
 	virtual bool KeyMayMatch(constSlice& key, constSlice& bloom_filter) const {
     constsize_t len = bloom_filter.size();
@@ -65,4 +65,4 @@ leveldb支持为每一段存储进来的数据提供Bloom Filter，默认情况�
     }
     return true;
     }
-    
+   {% endhighlight %} 

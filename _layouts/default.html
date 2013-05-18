@@ -10,19 +10,51 @@ pygments: true
   <meta name="description" content="{{ page.title }}"></meta>
   <meta name="author" content="tianxiao | tianxiao.matx@gmail.com"></meta>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"></meta>
-  <link rel="stylesheet" type="text/css" href="/stylesheets/stylesheet.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/pygment_trac.css" media="screen" />
-  <link rel="stylesheet" type="text/css" href="/stylesheets/print.css" media="print" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="alternate" type="application/rss+xml" title="tianxiao's blog » Feed" href="/feed.xml">
+  <link rel="stylesheet" media="screen" href="/stylesheets/bootstrap/bootstrap.min.css" >
+  <link rel="stylesheet" media="screen" href="/stylesheets/pygments.css" >
 </head>
 
 <body>
-  <h2 align="right"><a href="/">Home</a>&nbsp;|&nbsp;<a href="/feed.xml"><img src="/images/feed-icon-28x28.png"/></a>&nbsp;|&nbsp;<a href=mailto:tianxiao.matx@gmail.com>Contect Me</a></h2>
-  	<div class="content" id="content" role="main">
-		<div>
-    	{{ content }}
-  		</div><!-- .content -->
+	<div class="container">
+		<div class="page-header">
+			<h1>
+				Tianxiao's Blog<small><a href="/feed.xml"><img src="/images/feed-icon-28x28.png"></a></small>
+			</h1>
+		</div>
+		<div class="row">
+    		{{ content }}
+			<div class="span4">
+				<ul class="nav nav-list">
+					<li class="nav-header">
+					</li>
+					<!--<li class="active">-->
+					<li>	
+						<a href="/">首页</a>
+					</li>
+					<li>
+						<a href="/feed.xml">RSS</a>
+					</li>
+					<li>
+					</li>
+					<li class="nav-header">
+						作者
+					</li>
+					<li>
+					</li>
+					<li>
+					</li>
+					<li class="divider">
+					</li>
+					<li>
+						<a href="mailto:tianxiao.matx@gmail.com">Contect Me</a>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
+	<script src="/javascripts/jquery-1.9.1.min.js"></script>
+	<script src="/javascripts/bootstrap/bootstrap.min.js"></script>
 </body>
 </html>

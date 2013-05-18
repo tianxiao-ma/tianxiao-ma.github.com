@@ -2,12 +2,14 @@
 layout: default
 pygments: true
 ---
-<!--<div class="full">-->
-<div>
-  <h1 class="entry-title"><a href="{{ page.url }}" title="{{ page.title }}" rel="bookmark">{{ page.title }}</a></h1>
-  <h2 class="byline date full-date publish-info" title="{{ page.date }}">{{ page.date | date_to_string }}</h2>
-<!--  <div class="entry-content full-content">-->
-<div>
-    {{ content }}
-  </div>
+<div class="span8">
+	<h2>
+		<a href="{{ page.url }}" title="{{ page.title }}" rel="bookmark">{{ page.title }}</a>
+	</h2>
+	<p>
+		{{ page.date }}
+	</p>
+	<p>
+    	{{ content }}
+	</p>
 </div>

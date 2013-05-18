@@ -10,7 +10,7 @@ published: true
 Java编译器在编译Java源代码时，有些情况下会自动地生成一些方法，这些方法在源代码中是看不到的，这类方法叫做*synthetic method*，也就是人造方法，桥接方法就是其中一中。顾名思义，桥接方法是用来在两点之间建立联系的方法，这两点就是方法调用点和被调用的目标方法。下面来看两个例子，这两个例子展示了Java中桥接方法的主要使用场景。
 
 **场景一：**
-
+{% highlight java linenos %}
 	public class BridgeMethodTest {
 		static abstract class AbstractFoo {
 			public String getSomeStrings() {
@@ -21,9 +21,8 @@ Java编译器在编译Java源代码时，有些情况下会自动地生成一些
 		public static class ConcreteFoo extends AbstractFoo {
 		}
 	}
-
+{% endhighlight %}
 上面这段代码定义了两个类，编译之后，我们利用javap来看一下`AbstractFoo`和`ConcreteFoo`，执行`javap -c BridgeMethodTest$AbstractFoo`和`javap -c BridgeMethodTest$ConcreteFoo`之后的结果如下：
-
 	abstract class org.easymock.tests.BridgeMethodTest$AbstractFoo extends java.lang.Object{
 		org.easymock.tests.BridgeMethodTest$AbstractFoo();
 			Code:
@@ -54,7 +53,7 @@ Java编译器在编译Java源代码时，有些情况下会自动地生成一些
 **场景二：**
 
 Java中另外一类需要用到桥接方法的情况是在编译泛型类型的时候。比如下面的代码：
-
+{% highlight java linenos %}
 	public class BridgeMethodTest {
 		interface I <T> {
 			T getSomething();
@@ -66,7 +65,7 @@ Java中另外一类需要用到桥接方法的情况是在编译泛型类型的�
 			}
 		}
 	}
-	
+{% endhighlight %}	
 通过*javap*查看类A的字节码会发现是下面这样的(省略了构造函数的字节码)：
 	
 		class org.easymock.tests.BridgeMethodTest$A extends java.lang.Object implements org.easymock.tests.BridgeMethodTest$I{

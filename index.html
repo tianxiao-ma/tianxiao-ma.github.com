@@ -2,38 +2,54 @@
 title: Home
 layout: default
 ---
-{% if paginator.posts %}
-{% for post in paginator.posts %}
-   <!-- here add you post markup -->
-   <h1><a href="{{ post.url }}" target="_blank">{{ post.title }}</a></h1>
-   <p class="author">
-    <span class="date">{{post.date}}</span>
-  </p>
-  <div class="content">
-    {{ post.content }}
-  </div>
-{% endfor %}
 
-<!-- Pagination links -->
-<div class="pagination">
-  {% if paginator.previous_page %}
-    {% if {{paginator.previous_page}} == 1 %}
-    <a href="/" class="previous">Previous</a>
-    {% else %}
-    <a href="/page{{paginator.previous_page}}" class="previous">Previous</a>
-    {% endif %}
-  {% else %}
-    <span class="previous">Previous</span>
-  {% endif %}
-  <span class="page_number ">Page: {{paginator.page}} of {{paginator.total_pages}}</span>
-  {% if paginator.next_page %}
-    <a href="/page{{paginator.next_page}}" class="next ">Next</a>
-  {% else %}
-    <span class="next ">Next</span>
-  {% endif %}
-</div>
-{% else %}
-  <div>
-  I'm comming soon, be patient......
-  </div>
-{% endif %}
+	 {% if paginator.posts %}
+		<div class="span8">
+	 	{% for post in paginator.posts %}
+			<h2>
+				<a href="{{ post.url }}" target="_blank">{{ post.title }}</a>
+			</h2>
+			<p>
+				<span>{{post.date}}</span>
+			</p>
+			<p>
+				{{ post.content }}
+			</p>
+		{% endfor %}
+			<div class="pagination">
+				<ul>
+				{% if paginator.previous_page %}
+					{% if {{paginator.previous_page}} == 1 %}
+					<li>
+						<a href="/">上一页</a>
+					</li>
+					{% else %}
+					<li>
+						<a href="/page{{paginator.previous_page}}">上一页</a>
+					</li>
+					{% endif %}
+				{% else %}
+					<li>
+						<span>上一页</span>
+					</li>
+				{% endif %}
+					<li>
+						<span>第{{paginator.page}}页</span>
+					</li>
+				{% if paginator.next_page %}
+					<li>
+						<a href="/page{{paginator.next_page}}">下一页</a>
+					</li>
+				{% else %}
+					<li>
+						<span>下一页</span>
+					</li>
+				{% endif %}
+				</ul>
+			</div>
+		</div>
+	 {% else %}
+	 	<div>
+	 	I'm comming soon, be patient......
+	 	</div>
+	 {% endif %}
