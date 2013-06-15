@@ -1,2 +1,3 @@
 #ignore jekyll --server generated file
 _site/
+*.swp
