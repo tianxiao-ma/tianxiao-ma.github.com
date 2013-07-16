@@ -2,7 +2,7 @@
 title: iBatis动态SQL标签中的prepend属性详解
 layout: post
 permalink: /2013/07/ibatis-prepend-property-detail/
-date: Thu Jul 22 23:00:00 pm GMT+8 2013
+date: Thu Jul 12 23:00:00 pm GMT+8 2013
 published: true
 ---
 
