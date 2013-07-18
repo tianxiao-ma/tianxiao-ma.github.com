@@ -6,7 +6,7 @@ date: Mon Jul 15 23:00:00 pm GMT+8 2013
 published: true
 ---
 
-在[上一篇文章]()中，对[Netty](http://netty.io)的`Channel`框架做了一个整体的介绍，也给出了初始化一个NIO Server的代码示例。本节将对`Channel`框架中的`Pipeline`机制进行展开介绍。
+在[上一篇文章](/2013/07/netty-channel-framework-pipeline/)中，对[Netty](http://netty.io)的`Channel`框架做了一个整体的介绍，也给出了初始化一个NIO Server的代码示例。本节将对`Channel`框架中的`Pipeline`机制进行展开介绍。
 
 `ChannelPipeline`接口继承了`ChannelInboundInvoker`接口和`ChannelOutboundInvoker`接口，这样`ChannelPipeline`就变成了一个*Mix-In*接口，提供了处理Netty中的inbound事件和outbound事件的接口。在Netty中，inbound事件主要包括新数据读取事件和`Channel`在`EventLoop`中的相关事件(向`EventLoop`注册、取消注册等)，这些事件最终都会被传递到`ChannelHandler`的相应接口上，应用程序可以根据需要来处理相关的事件。outbound事件基本都是与直接发生在`Channel`上操作相关的事件，比如绑定ip和端口(bind)、链接远程服务器(connect)、关闭channel、从channel上读写数据、通过channel发送文件等等。从Netty对这两个接口的定义和使用来看，`ChannelInboundInvoker`接口的抽象级别要高一些，而`ChannelOutboundInvoker`接口中的方法跟底层的channel的操作关联度更大。从接口的命名来看，不是特别的好。
 
