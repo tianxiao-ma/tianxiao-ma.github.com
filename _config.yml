@@ -1,6 +1,5 @@
 permalink: /:year/:month/:title/
 markdown: rdiscount
 paginate: 10
-paginate_path: "blog/page:num"
 url: tianxiao.in
 pygments: true
