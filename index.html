@@ -2,6 +2,8 @@
 title: Home
 layout: default
 ---
+
+	{{ site.posts }}
 	{% if paginator.total_pages > 0 %}
 	 	{% for post in paginator.posts %}
 			<h2>
