@@ -24,7 +24,7 @@ layout: default
 					</li>
 					{% else %}
 					<li>
-						<a href="/blog/page{{paginator.previous_page}}/index.html">上一页</a>
+						<a href="/page{{paginator.previous_page}}/index.html">上一页</a>
 					</li>
 					{% endif %}
 				{% else %}
@@ -38,7 +38,7 @@ layout: default
                         {% if i == 1%}
                         <a href="/index.html">{% if paginator.page == i %} <em style="color:red;font-size:18px">1</em>  {% else %}1{% endif %}</a>
                         {% else %}
-                        <a href="/blog/page{{i}}/index.html">{% if paginator.page == i %} <em style="color:red;font-size:18px">{{i}}</em>  {% else %}{{i}}{% endif %}</a>
+                        <a href="/page{{i}}/index.html">{% if paginator.page == i %} <em style="color:red;font-size:18px">{{i}}</em>  {% else %}{{i}}{% endif %}</a>
                         {% endif %}
                         {% if !forloop.last %}
                         &nbsp;
@@ -48,7 +48,7 @@ layout: default
 					</li>
 				{% if paginator.next_page %}
 					<li>
-						<a href="/blog/page{{paginator.next_page}}/index.html">下一页</a>
+						<a href="/page{{paginator.next_page}}/index.html">下一页</a>
 					</li>
 				{% else %}
 					<li>
