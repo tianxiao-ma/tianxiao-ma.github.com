@@ -2,6 +2,7 @@
 title: Home
 layout: default
 ---
+	{% if paginator.total_pages > 0 %}
 	 	{% for post in paginator.posts %}
 			<h2>
 				<a href="{{ post.url }}" target="_blank">{{ post.title }}</a>
@@ -55,6 +56,8 @@ layout: default
 				{% endif %}
 				</ul>
 			</div>
+	{% else %}
 	 	<div>
 	 	I'm comming soon, be patient......
 	 	</div>
+	{% endif %}
