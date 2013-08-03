@@ -1,7 +1,7 @@
 ---
 title: Java NIO中如何正确处理Channel关闭事件
 layout: post
-permalink: /2013/07/netty-channel-framework-pipeline/
+permalink: /2013/07/how-process-channel-close-in-java-nio/
 date: Tue Jul 16 11:50:00 pm GMT+8 2013
 published: true
 ---

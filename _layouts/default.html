@@ -24,7 +24,9 @@ pygments: true
 			</h1>
 		</div>
 		<div class="row">
+			<div class="span8" style="text-align: justify;">
     		{{ content }}
+			</div>
 			<div class="span4">
 				<ul class="nav nav-list">
 					<li class="nav-header">
@@ -62,6 +64,16 @@ pygments: true
 					<li>
 					<a href="http://dongsm.cn/" target='_blank'>dongsm's blog</a>
 					</li>
+					<li class="nav-header">
+						最新发表
+					</li>
+					<li>
+						{% for post in site.posts limit:10 %}
+						<div>
+							<a href="{{ post.url }}" target="_blank">{{ post.title }}</a>&nbsp;{{ post.date | date:"%Y-%m-%d" }}
+						</div>
+						{% endfor %}
+					<li>
 				</ul>
 			</div>
 		</div>

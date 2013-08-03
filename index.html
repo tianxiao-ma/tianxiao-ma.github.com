@@ -4,16 +4,15 @@ layout: default
 ---
 
 	 {% if paginator.posts %}
-		<div class="span8" style="text-align: justify;">
 	 	{% for post in paginator.posts %}
 			<h2>
 				<a href="{{ post.url }}" target="_blank">{{ post.title }}</a>
 			</h2>
 			<p>
-				<span>{{post.date}}</span>
+				<span>{{ post.date | date:"%Y-%m-%d" }}</span>
 			</p>
 			<p>
-				{{ post.content }}
+				{{ post.content | strip_html | truncate:1024 }}
 			</p>
 		{% endfor %}
 			<div class="pagination">
@@ -25,7 +24,7 @@ layout: default
 					</li>
 					{% else %}
 					<li>
-						<a href="/page{{paginator.previous_page}}">上一页</a>
+						<a href="/blog/page{{paginator.previous_page}}/index.html">上一页</a>
 					</li>
 					{% endif %}
 				{% else %}
@@ -34,11 +33,22 @@ layout: default
 					</li>
 				{% endif %}
 					<li>
-						<span>第{{paginator.page}}页</span>
+					<span>
+                    {% for i in (1..paginator.total_pages) %}
+                        {% if i == 1%}
+                        <a href="/index.html">{% if paginator.page == i %} <em style="color:red;font-size:18px">1</em>  {% else %}1{% endif %}</a>
+                        {% else %}
+                        <a href="/blog/page{{i}}/index.html">{% if paginator.page == i %} <em style="color:red;font-size:18px">{{i}}</em>  {% else %}{{i}}{% endif %}</a>
+                        {% endif %}
+                        {% if !forloop.last %}
+                        &nbsp;
+                        {% endif %}
+                    {% endfor %}
+					</span>
 					</li>
 				{% if paginator.next_page %}
 					<li>
-						<a href="/page{{paginator.next_page}}">下一页</a>
+						<a href="/blog/page{{paginator.next_page}}/index.html">下一页</a>
 					</li>
 				{% else %}
 					<li>
@@ -47,7 +57,6 @@ layout: default
 				{% endif %}
 				</ul>
 			</div>
-		</div>
 	 {% else %}
 	 	<div>
 	 	I'm comming soon, be patient......

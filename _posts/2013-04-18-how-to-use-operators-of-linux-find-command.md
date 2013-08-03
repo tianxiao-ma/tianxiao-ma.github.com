@@ -1,7 +1,7 @@
 ---
 title: How to Use Operators of Linux find Command
 layout: post
-permalink: /2013/04/how-to-use-newline-in-sed-on-mac-os/
+permalink: /2013/04/how-to-use-operators-of-linux-find-command/
 date: Wed Apr 18 16:21:00 pm GMT+8 2013
 published: true
 ---
