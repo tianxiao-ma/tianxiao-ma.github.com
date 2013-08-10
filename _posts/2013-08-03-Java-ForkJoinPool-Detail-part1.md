@@ -1,7 +1,7 @@
 ---
 title: Java 7 ForkJoinPool原理分析
 layout: post
-permalink: /2013/07/forkjoinpoll-datail-part-one
+permalink: /2013/08/forkjoinpoll-datail-part-one
 date: Sat Aug 3 16:10:00 pm GMT+8 2013
 published: true
 ---
