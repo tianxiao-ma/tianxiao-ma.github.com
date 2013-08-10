@@ -1,7 +1,7 @@
 ---
 title: ForkJoinWorkerThread中的循环队列实现
 layout: post
-permalink: /2013/08/forkjoinpoll-datail-part-one
+permalink: /2013/08/forkjoinpoll-datail-part-two
 date: Sat Aug 10 20:45:00 pm GMT+8 2013
 published: true
 ---
