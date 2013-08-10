@@ -70,7 +70,7 @@ pygments: true
 					<li>
 						{% for post in site.posts limit:10 %}
 						<div>
-							<a href="{{ post.url }}" target="_blank">{{ post.title }}</a>&nbsp;{{ post.date | date:"%Y-%m-%d" }}
+							{{ post.date | date:"%Y-%m-%d" }}:<a href="{{ post.url }}" target="_blank">{{ post.title }}</a>
 						</div>
 						{% endfor %}
 					<li>
