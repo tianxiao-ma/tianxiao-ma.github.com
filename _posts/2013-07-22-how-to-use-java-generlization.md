@@ -3,7 +3,7 @@ title: Java泛型要点总结-帮你用好Java泛型
 layout: post
 permalink: /2013/07/how-to-use-java-generlization/
 date: Tue Jul 22 17:10:00 pm GMT+8 2013
-published: true
+published: false
 ---
 
 使用[Java的泛型](http://docs.oracle.com/javase/tutorial/java/generics/)的好处总体来说有两个，一是可以提高代码的复用率，二是可以帮助程序员在编译期发现类型不匹配的错误。
