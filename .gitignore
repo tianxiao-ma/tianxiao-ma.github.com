@@ -1,3 +1,4 @@
 #ignore jekyll --server generated file
 _site/
 *.swp
+.DS_Store

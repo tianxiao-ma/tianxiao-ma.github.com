@@ -9,11 +9,15 @@ published: true
 [Netty](http://netty.io/)是一个网络通讯框架，提供了对多种传输层以及应用层协议的支持，并且具有很好的可扩展性。本文将会介绍*Netty*的`Channel`框架及其工作方式。读这篇文章需要一点[Java NIO](http://docs.oracle.com/javase/6/docs/technotes/guides/io/index.html)的背景知识。
 
 `Channel`接口及其子类用来被用来实现各种不同的传输层和应用层协议，他们的类结构如下图所示：
+
 ![Channel Class Hierarchy](/images/2013-07/netty/channel-class-hierarchy.png)
+
 各个不同的`Channel`具体实现类包含各个协议相关细节，包括如何建立链接、如果接收数据、如何发送数据等等。由于各个具体协议的`Channel`类已经帮助我们屏蔽了大量的底层通讯细节，使得应用程序员可以专注于业务逻辑，接收和发送数据都会变的非常的简单，只需要实现符合业务需要的`ChannelHandler`接口的实现类就可以了。
 
 *Netty*中，`ChannelHandler`接口及其实现类向应用程序员暴露了操作网络数据的接口，根据用途不同，*Netty*中有多种不同的类型`ChannelHandler`可供我们选择和实现，其类层次结构如下图所示：
+
 ![Channel Handler Hierarchy](/images/2013-07/netty/channel-handler-hierarchy.png)
+
 上图中的`ChannelOperationHandler`接口及其子接口和子类定义了处理数据输出的回调接口，而`ChannelStatHandler`接口及其子接口则定义了处理数据输入的回调接口。但是有一点需要注意，对channel的读写操作都是定义在`ChannelOperationHandler`中的，也就是说，如果我们想从channel直接读写数据而不是接收Netty为我们准备好的数据，那么就必须定义一个实现了`ChannelOperationHandler`接口的具体类型。
 
 我们可以为某个`Channel`添加多个不同的`ChannelHandler`，每个`ChannelHandler`负责消息处理过程中的某个一个独立的部分，比如我们可以定义一个专门负责记录日志的`ChannelHandler`，一个转发负责编码的`ChannelHandler`，一个专门真正业务逻辑的`ChannelHandler`等等。Netty会将这些不同的`ChannelHandler`以添加时的顺序组成一个`ChannelHandler`链，一个接一个地调用这些`ChannelHandler`，而这个链由`ChannelPipeline`负责构建和管理。
