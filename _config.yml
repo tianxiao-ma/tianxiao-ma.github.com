@@ -3,3 +3,4 @@ markdown: rdiscount
 paginate: 10
 url: tianxiao.in
 pygments: true
+encoding: utf-8
