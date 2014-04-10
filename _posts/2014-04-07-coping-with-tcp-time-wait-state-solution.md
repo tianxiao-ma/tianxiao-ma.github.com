@@ -1,7 +1,7 @@
 ---
 title: TCP TIMEWAIT状态解析2-解决方案
 layout: post
-permalink: /2014/14/coping-with-tcp-time-wait-state-part-2
+permalink: /2014/04/coping-with-tcp-time-wait-state-part-2
 date: Sun Apr 6 22:15:56 pm GMT+8 2014
 published: true
 ---
