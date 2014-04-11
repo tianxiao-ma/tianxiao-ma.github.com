@@ -88,3 +88,10 @@ loop(Socket) ->
 
 另外，在写数据的时候，`gen_tcp:send/2`方法会在发送的数据之前加上4字节的长度信息，相当于对Socket添加了{packet, 4}属性。如果需要按照其他的方式来读写数据，可以修改packet的设置。关于Socket的属性详细介绍可以参考[官方文档](http://www.erlang.org/doc/man/inet.html#setopts-2)。
 
+### 关于controlling_process与active属性
+只有Socket的拥有者才可以通过消息的方式获取从Socket接收到的数据，也就是说当Socket的active被设置成true或者once的时候，拥有Socket的进程才可以通过消息的方式从Socket读取数据，以及接收tcp_closed消息。
+
+有两种方式可以让进程成为Socket的拥有者。第一，Socket的创建者默认就是Socket的拥有者，第二，通过`gen_tcp:controlling_process/2`方法设置Socket的拥有者。
+
+当active属性被设置成false的时候，任何进程都可以调用`gen_tcp:recv/2,3`方法来读取数据。当Socket被关闭时，这两个方法会返回{error, closed}。
+
