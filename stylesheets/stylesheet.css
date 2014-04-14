@@ -147,6 +147,14 @@ blockquote {
   color: #aaa;
   padding-left: 10px;
   border-left: 1px dotted #666;
+  background: #d9e9ff; 
+  padding: 10px 15px 10px 15px; 
+  margin: 1em 3em 1em 3em; 
+  font-size:.8em;
+  border-style:dotted dotted dotted solid;
+  border-width:1px 1px 1px 5px;
+  border-color:#5bbcdd; 
+  line-height:200% 
 }
 
 pre {
